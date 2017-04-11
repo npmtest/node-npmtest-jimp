@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-jimp/jimp/resize2.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-jimp">npmtest-jimp (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-jimp/jimp/resize2.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">0.73% <small>(1 / 137)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">0.73% <small>(1 / 137)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-jimp/jimp/</a> &#187; resize2.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Copyright (c) 2015 Guyon Roche
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:&lt;/p&gt;
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * 
+ */
+"use strict";
+&nbsp;
+module.exports = {
+    nearestNeighbor: <span class="fstat-no" title="function not covered" >function(src, dst, options) {</span>
+        
+<span class="cstat-no" title="statement not covered" >        var wSrc = src.width;</span>
+<span class="cstat-no" title="statement not covered" >        var hSrc = src.height;</span>
+        //console.log("wSrc="+wSrc + ", hSrc="+hSrc);
+        
+<span class="cstat-no" title="statement not covered" >        var wDst = dst.width;</span>
+<span class="cstat-no" title="statement not covered" >        var hDst = dst.height;</span>
+        //console.log("wDst="+wDst + ", hDst="+hDst);
+        
+<span class="cstat-no" title="statement not covered" >        var bufSrc = src.data;</span>
+<span class="cstat-no" title="statement not covered" >        var bufDst = dst.data;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; hDst; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            for (var j = 0; j &lt; wDst; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                var posDst = (i * wDst + j) * 4;</span>
+                
+<span class="cstat-no" title="statement not covered" >                var iSrc = Math.round(i * hSrc / hDst);</span>
+<span class="cstat-no" title="statement not covered" >                var jSrc = Math.round(j * wSrc / wDst);</span>
+<span class="cstat-no" title="statement not covered" >                var posSrc = (iSrc * wSrc + jSrc) * 4;</span>
+                
+<span class="cstat-no" title="statement not covered" >                bufDst[posDst++] = bufSrc[posSrc++];</span>
+<span class="cstat-no" title="statement not covered" >                bufDst[posDst++] = bufSrc[posSrc++];</span>
+<span class="cstat-no" title="statement not covered" >                bufDst[posDst++] = bufSrc[posSrc++];</span>
+<span class="cstat-no" title="statement not covered" >                bufDst[posDst++] = bufSrc[posSrc++];</span>
+            }
+        }
+    },
+    bilinearInterpolation: <span class="fstat-no" title="function not covered" >function(src, dst, options) {</span>
+        
+<span class="cstat-no" title="statement not covered" >        var wSrc = src.width;</span>
+<span class="cstat-no" title="statement not covered" >        var hSrc = src.height;</span>
+        //console.log("wSrc="+wSrc + ", hSrc="+hSrc);
+        
+<span class="cstat-no" title="statement not covered" >        var wDst = dst.width;</span>
+<span class="cstat-no" title="statement not covered" >        var hDst = dst.height;</span>
+        //console.log("wDst="+wDst + ", hDst="+hDst);
+        
+<span class="cstat-no" title="statement not covered" >        var bufSrc = src.data;</span>
+<span class="cstat-no" title="statement not covered" >        var bufDst = dst.data;</span>
+        
+<span class="cstat-no" title="statement not covered" >        var interpolate = <span class="fstat-no" title="function not covered" >function(k, kMin, vMin, kMax, vMax) {</span></span>
+            // special case - k is integer
+<span class="cstat-no" title="statement not covered" >            if (kMin === kMax) {</span>
+<span class="cstat-no" title="statement not covered" >                return vMin;</span>
+            }
+            
+<span class="cstat-no" title="statement not covered" >            return Math.round((k - kMin) * vMax + (kMax - k) * vMin);</span>
+        };
+<span class="cstat-no" title="statement not covered" >        var assign = <span class="fstat-no" title="function not covered" >function(pos, offset, x, xMin, xMax, y, yMin, yMax) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var posMin = (yMin * wSrc + xMin) * 4 + offset;</span>
+<span class="cstat-no" title="statement not covered" >            var posMax = (yMin * wSrc + xMax) * 4 + offset;</span>
+<span class="cstat-no" title="statement not covered" >            var vMin = interpolate(x, xMin, bufSrc[posMin], xMax, bufSrc[posMax]);</span>
+            
+            // special case, y is integer
+<span class="cstat-no" title="statement not covered" >            if (yMax === yMin) {</span>
+<span class="cstat-no" title="statement not covered" >                bufDst[pos+offset] = vMin;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                posMin = (yMax * wSrc + xMin) * 4 + offset;</span>
+<span class="cstat-no" title="statement not covered" >                posMax = (yMax * wSrc + xMax) * 4 + offset;</span>
+<span class="cstat-no" title="statement not covered" >                var vMax = interpolate(x, xMin, bufSrc[posMin], xMax, bufSrc[posMax]);</span>
+                
+<span class="cstat-no" title="statement not covered" >                bufDst[pos+offset] = interpolate(y, yMin, vMin, yMax, vMax);</span>
+            }
+        }
+        
+<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; hDst; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            for (var j = 0; j &lt; wDst; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                var posDst = (i * wDst + j) * 4;</span>
+                
+                // x &amp; y in src coordinates
+<span class="cstat-no" title="statement not covered" >                var x = j * wSrc / wDst;</span>
+<span class="cstat-no" title="statement not covered" >                var xMin = Math.floor(x);</span>
+<span class="cstat-no" title="statement not covered" >                var xMax = Math.min(Math.ceil(x), wSrc-1);</span>
+                
+<span class="cstat-no" title="statement not covered" >                var y = i * hSrc / hDst;</span>
+<span class="cstat-no" title="statement not covered" >                var yMin = Math.floor(y);</span>
+<span class="cstat-no" title="statement not covered" >                var yMax = Math.min(Math.ceil(y), hSrc-1);</span>
+                
+<span class="cstat-no" title="statement not covered" >                assign(posDst, 0, x, xMin, xMax, y, yMin, yMax);</span>
+<span class="cstat-no" title="statement not covered" >                assign(posDst, 1, x, xMin, xMax, y, yMin, yMax);</span>
+<span class="cstat-no" title="statement not covered" >                assign(posDst, 2, x, xMin, xMax, y, yMin, yMax);</span>
+<span class="cstat-no" title="statement not covered" >                assign(posDst, 3, x, xMin, xMax, y, yMin, yMax);</span>
+            }
+        }
+    },
+    
+    _interpolate2D: <span class="fstat-no" title="function not covered" >function(src, dst, options, interpolate) {</span>
+        
+<span class="cstat-no" title="statement not covered" >        var bufSrc = src.data;</span>
+<span class="cstat-no" title="statement not covered" >        var bufDst = dst.data;</span>
+        
+<span class="cstat-no" title="statement not covered" >        var wSrc = src.width;</span>
+<span class="cstat-no" title="statement not covered" >        var hSrc = src.height;</span>
+        //console.log("wSrc="+wSrc + ", hSrc="+hSrc + ", srcLen="+bufSrc.length);
+        
+<span class="cstat-no" title="statement not covered" >        var wDst = dst.width;</span>
+<span class="cstat-no" title="statement not covered" >        var hDst = dst.height;</span>
+        //console.log("wDst="+wDst + ", hDst="+hDst + ", dstLen="+bufDst.length);
+        
+        // when dst smaller than src/2, interpolate first to a multiple between 0.5 and 1.0 src, then sum squares
+<span class="cstat-no" title="statement not covered" >        var wM = Math.max(1, Math.floor(wSrc / wDst));</span>
+<span class="cstat-no" title="statement not covered" >        var wDst2 = wDst * wM;</span>
+<span class="cstat-no" title="statement not covered" >        var hM = Math.max(1, Math.floor(hSrc / hDst));</span>
+<span class="cstat-no" title="statement not covered" >        var hDst2 = hDst * hM;</span>
+        //console.log("wM="+wM + ", wDst2="+wDst2 + ", hM="+hM + ", hDst2="+hDst2);
+        
+        // ===========================================================
+        // Pass 1 - interpolate rows
+        // buf1 has width of dst2 and height of src
+<span class="cstat-no" title="statement not covered" >        var buf1 = new Buffer(wDst2 * hSrc * 4);</span>
+<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; hSrc; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            for (var j = 0; j &lt; wDst2; j++) {</span>
+                // i in src coords, j in dst coords
+                
+                // calculate x in src coords
+                // this interpolation requires 4 sample points and the two inner ones must be real
+                // the outer points can be fudged for the edges.
+                // therefore (wSrc-1)/wDst2
+<span class="cstat-no" title="statement not covered" >                var x = j * (wSrc-1) / wDst2;</span>
+<span class="cstat-no" title="statement not covered" >                var xPos = Math.floor(x);</span>
+<span class="cstat-no" title="statement not covered" >                var t = x - xPos;</span>
+<span class="cstat-no" title="statement not covered" >                var srcPos = (i * wSrc + xPos) * 4;</span>
+                
+<span class="cstat-no" title="statement not covered" >                var buf1Pos = (i * wDst2 + j) * 4;</span>
+<span class="cstat-no" title="statement not covered" >                for (var k = 0; k &lt; 4; k++) {</span>
+<span class="cstat-no" title="statement not covered" >                    var kPos = srcPos + k;</span>
+<span class="cstat-no" title="statement not covered" >                    var x0 = (xPos &gt; 0) ? bufSrc[kPos - 4] : 2*bufSrc[kPos]-bufSrc[kPos+4];</span>
+<span class="cstat-no" title="statement not covered" >                    var x1 = bufSrc[kPos];</span>
+<span class="cstat-no" title="statement not covered" >                    var x2 = bufSrc[kPos + 4];</span>
+<span class="cstat-no" title="statement not covered" >                    var x3 = (xPos &lt; wSrc - 2) ? bufSrc[kPos + 8] : 2*bufSrc[kPos + 4]-bufSrc[kPos];</span>
+<span class="cstat-no" title="statement not covered" >                    buf1[buf1Pos+k] = interpolate(x0,x1,x2,x3,t);</span>
+                }
+            }
+        }
+        //this._writeFile(wDst2, hSrc, buf1, "out/buf1.jpg");
+        
+        // ===========================================================
+        // Pass 2 - interpolate columns
+        // buf2 has width and height of dst2
+<span class="cstat-no" title="statement not covered" >        var buf2 = new Buffer(wDst2 * hDst2 * 4);</span>
+<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; hDst2; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            for (var j = 0; j &lt; wDst2; j++) {</span>
+                // i&amp;j in dst2 coords
+                
+                // calculate y in buf1 coords
+                // this interpolation requires 4 sample points and the two inner ones must be real
+                // the outer points can be fudged for the edges.
+                // therefore (hSrc-1)/hDst2
+<span class="cstat-no" title="statement not covered" >                var y = i * (hSrc-1) / hDst2;</span>
+<span class="cstat-no" title="statement not covered" >                var yPos = Math.floor(y);</span>
+<span class="cstat-no" title="statement not covered" >                var t = y - yPos;</span>
+<span class="cstat-no" title="statement not covered" >                var buf1Pos = (yPos * wDst2 + j) * 4;</span>
+<span class="cstat-no" title="statement not covered" >                var buf2Pos = (i * wDst2 + j) * 4;</span>
+<span class="cstat-no" title="statement not covered" >                for (var k = 0; k &lt; 4; k++) {</span>
+<span class="cstat-no" title="statement not covered" >                    var kPos = buf1Pos + k;</span>
+<span class="cstat-no" title="statement not covered" >                    var y0 = (yPos &gt; 0) ? buf1[kPos - wDst2*4] : 2*buf1[kPos]-buf1[kPos + wDst2*4];</span>
+<span class="cstat-no" title="statement not covered" >                    var y1 = buf1[kPos];</span>
+<span class="cstat-no" title="statement not covered" >                    var y2 = buf1[kPos + wDst2*4];</span>
+<span class="cstat-no" title="statement not covered" >                    var y3 = (yPos &lt; hSrc-2) ? buf1[kPos + wDst2*8] : 2*buf1[kPos + wDst2*4]-buf1[kPos];</span>
+                    
+<span class="cstat-no" title="statement not covered" >                    buf2[buf2Pos + k] = interpolate(y0,y1,y2,y3,t);</span>
+                }
+            }
+        }
+        //this._writeFile(wDst2, hDst2, buf2, "out/buf2.jpg");
+        
+        // ===========================================================
+        // Pass 3 - scale to dst
+<span class="cstat-no" title="statement not covered" >        var m = wM * hM;</span>
+<span class="cstat-no" title="statement not covered" >        if (m &gt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >            for (var i = 0; i &lt; hDst; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                for (var j = 0; j &lt; wDst; j++) {</span>
+                    // i&amp;j in dst bounded coords
+<span class="cstat-no" title="statement not covered" >                    var r = 0;</span>
+<span class="cstat-no" title="statement not covered" >                    var g = 0;</span>
+<span class="cstat-no" title="statement not covered" >                    var b = 0;</span>
+<span class="cstat-no" title="statement not covered" >                    var a = 0;</span>
+<span class="cstat-no" title="statement not covered" >                    for (var y = 0; y &lt; hM; y++) {</span>
+<span class="cstat-no" title="statement not covered" >                        var yPos = i * hM + y;</span>
+<span class="cstat-no" title="statement not covered" >                        for (var x = 0; x &lt; wM; x++) {</span>
+<span class="cstat-no" title="statement not covered" >                            var xPos = j * wM + x;</span>
+<span class="cstat-no" title="statement not covered" >                            var xyPos = (yPos * wDst2 + xPos) * 4;</span>
+<span class="cstat-no" title="statement not covered" >                            r += buf2[xyPos];</span>
+<span class="cstat-no" title="statement not covered" >                            g += buf2[xyPos+1];</span>
+<span class="cstat-no" title="statement not covered" >                            b += buf2[xyPos+2];</span>
+<span class="cstat-no" title="statement not covered" >                            a += buf2[xyPos+3];</span>
+                        }
+                    }
+                    
+<span class="cstat-no" title="statement not covered" >                    var pos = (i*wDst + j) * 4;</span>
+<span class="cstat-no" title="statement not covered" >                    bufDst[pos]   = Math.round(r / m);</span>
+<span class="cstat-no" title="statement not covered" >                    bufDst[pos+1] = Math.round(g / m);</span>
+<span class="cstat-no" title="statement not covered" >                    bufDst[pos+2] = Math.round(b / m);</span>
+<span class="cstat-no" title="statement not covered" >                    bufDst[pos+3] = Math.round(a / m);</span>
+                }
+            }
+        } else {
+            // replace dst buffer with buf2
+<span class="cstat-no" title="statement not covered" >            dst.data = buf2;</span>
+        }
+    },
+    
+    bicubicInterpolation: <span class="fstat-no" title="function not covered" >function(src, dst, options) {</span>
+<span class="cstat-no" title="statement not covered" >        var interpolateCubic = <span class="fstat-no" title="function not covered" >function(x0, x1, x2, x3, t) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var a0 = x3 - x2 - x0 + x1;</span>
+<span class="cstat-no" title="statement not covered" >            var a1 = x0 - x1 - a0;</span>
+<span class="cstat-no" title="statement not covered" >            var a2 = x2 - x0;</span>
+<span class="cstat-no" title="statement not covered" >            var a3 = x1;</span>
+<span class="cstat-no" title="statement not covered" >            return Math.max(0,Math.min(255,(a0 * (t * t * t)) + (a1 * (t * t)) + (a2 * t) + (a3)));</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this._interpolate2D(src, dst, options, interpolateCubic);</span>
+    },
+    
+    hermiteInterpolation: <span class="fstat-no" title="function not covered" >function(src, dst, options) {</span>
+<span class="cstat-no" title="statement not covered" >        var interpolateHermite = <span class="fstat-no" title="function not covered" >function(x0, x1, x2, x3, t)</span></span>
+        {
+<span class="cstat-no" title="statement not covered" >            var c0 = x1;</span>
+<span class="cstat-no" title="statement not covered" >            var c1 = 0.5 * (x2 - x0);</span>
+<span class="cstat-no" title="statement not covered" >            var c2 = x0 - (2.5 * x1) + (2 * x2) - (0.5 * x3);</span>
+<span class="cstat-no" title="statement not covered" >            var c3 = (0.5 * (x3 - x0)) + (1.5 * (x1 - x2));</span>
+<span class="cstat-no" title="statement not covered" >            return  Math.max(0,Math.min(255,Math.round((((((c3 * t) + c2) * t) + c1) * t) + c0)));</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this._interpolate2D(src, dst, options, interpolateHermite);</span>
+    },
+    
+    bezierInterpolation: <span class="fstat-no" title="function not covered" >function(src, dst, options) {</span>
+        // between 2 points y(n), y(n+1), use next points out, y(n-1), y(n+2)
+        // to predict control points (a &amp; b) to be placed at n+0.5
+        //  ya(n) = y(n) + (y(n+1)-y(n-1))/4
+        //  yb(n) = y(n+1) - (y(n+2)-y(n))/4
+        // then use std bezier to interpolate [n,n+1)
+        //  y(n+t) = y(n)*(1-t)^3 + 3 * ya(n)*(1-t)^2*t + 3 * yb(n)*(1-t)*t^2 + y(n+1)*t^3
+        //  note the 3* factor for the two control points
+        // for edge cases, can choose:
+        //  y(-1) = y(0) - 2*(y(1)-y(0))
+        //  y(w) = y(w-1) + 2*(y(w-1)-y(w-2))
+        // but can go with y(-1) = y(0) and y(w) = y(w-1)
+<span class="cstat-no" title="statement not covered" >        var interpolateBezier = <span class="fstat-no" title="function not covered" >function(x0, x1, x2, x3, t) {</span></span>
+            // x1, x2 are the knots, use x0 and x3 to calculate control points
+<span class="cstat-no" title="statement not covered" >            var cp1 = x1 + (x2-x0)/4;</span>
+<span class="cstat-no" title="statement not covered" >            var cp2 = x2 - (x3-x1)/4;</span>
+<span class="cstat-no" title="statement not covered" >            var nt = 1-t;</span>
+<span class="cstat-no" title="statement not covered" >            var c0 =      x1 * nt * nt * nt;</span>
+<span class="cstat-no" title="statement not covered" >            var c1 = 3 * cp1 * nt * nt *  t;</span>
+<span class="cstat-no" title="statement not covered" >            var c2 = 3 * cp2 * nt *  t *  t;</span>
+<span class="cstat-no" title="statement not covered" >            var c3 =      x2 *  t *  t *  t;</span>
+<span class="cstat-no" title="statement not covered" >            return Math.max(0,Math.min(255,Math.round(c0 + c1 + c2 + c3)));</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this._interpolate2D(src, dst, options, interpolateBezier);</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 10:02:58 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
