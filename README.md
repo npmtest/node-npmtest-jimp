@@ -1,7 +1,7 @@
 # test coverage for  [jimp (v0.2.27)](https://github.com/oliver-moran/jimp#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-jimp.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-jimp) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-jimp.svg)](https://travis-ci.org/npmtest/node-npmtest-jimp)
 #### An image processing library written entirely in JavaScript (i.e. zero external or native dependencies).
 
-[![NPM](https://nodei.co/npm/jimp.png?downloads=true)](https://www.npmjs.com/package/jimp)
+[![NPM](https://nodei.co/npm/jimp.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/jimp)
 
 | git-branch : | [alpha](https://github.com/npmtest/node-npmtest-jimp/tree/alpha)|
 |--:|:--|
@@ -9,11 +9,17 @@
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-jimp/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-jimp/build/test-report.html)|
 | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-jimp/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-jimp/tree/gh-pages/build)|
 
-[![istanbul-coverage](https://npmtest.github.io/node-npmtest-jimp/build/screenCapture.buildCustomOrg.browser.coverage.html.png)](https://npmtest.github.io/node-npmtest-jimp/build/coverage.html/index.html)
+- [https://npmtest.github.io/node-npmtest-jimp/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-jimp/build/coverage.html/index.html)
 
-[![test-report](https://npmtest.github.io/node-npmtest-jimp/build/screenCapture.buildCustomOrg.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmtest%252Fnode-npmtest-jimp%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://npmtest.github.io/node-npmtest-jimp/build/test-report.html)
+[![istanbul-coverage](https://npmtest.github.io/node-npmtest-jimp/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://npmtest.github.io/node-npmtest-jimp/build/coverage.html/index.html)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-jimp/build/screenCapture.buildApidoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-jimp%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-jimp/build/apidoc.html)
+- [https://npmtest.github.io/node-npmtest-jimp/build/test-report.html](https://npmtest.github.io/node-npmtest-jimp/build/test-report.html)
+
+[![test-report](https://npmtest.github.io/node-npmtest-jimp/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://npmtest.github.io/node-npmtest-jimp/build/test-report.html)
+
+- [https://npmdoc.github.io/node-npmdoc-jimp/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-jimp/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-jimp/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-jimp/build/apidoc.html)
 
 ![npmPackageListing](https://npmtest.github.io/node-npmtest-jimp/build/screenCapture.npmPackageListing.svg)
 
@@ -27,8 +33,7 @@
 
 {
     "author": {
-        "name": "Oliver Moran",
-        "email": "oliver.moran@gmail.com"
+        "name": "Oliver Moran"
     },
     "bugs": {
         "url": "https://github.com/oliver-moran/jimp/issues"
@@ -85,13 +90,11 @@
     "main": "index.js",
     "maintainers": [
         {
-            "name": "oliver.moran",
-            "email": "oliver@nth-iteration.ie"
+            "name": "oliver.moran"
         }
     ],
     "name": "jimp",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/oliver-moran/jimp.git"
