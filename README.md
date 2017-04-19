@@ -1,4 +1,7 @@
-# test coverage for  [jimp (v0.2.27)](https://github.com/oliver-moran/jimp#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-jimp.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-jimp) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-jimp.svg)](https://travis-ci.org/npmtest/node-npmtest-jimp)
+# npmtest-jimp
+
+#### test coverage for  [jimp (v0.2.27)](https://github.com/oliver-moran/jimp#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-jimp.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-jimp) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-jimp.svg)](https://travis-ci.org/npmtest/node-npmtest-jimp)
+
 #### An image processing library written entirely in JavaScript (i.e. zero external or native dependencies).
 
 [![NPM](https://nodei.co/npm/jimp.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/jimp)
