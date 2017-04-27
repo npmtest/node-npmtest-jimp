@@ -1,6 +1,6 @@
 # npmtest-jimp
 
-#### test coverage for  [jimp (v0.2.27)](https://github.com/oliver-moran/jimp#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-jimp.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-jimp) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-jimp.svg)](https://travis-ci.org/npmtest/node-npmtest-jimp)
+#### basic test coverage for  [jimp (v0.2.27)](https://github.com/oliver-moran/jimp#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-jimp.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-jimp) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-jimp.svg)](https://travis-ci.org/npmtest/node-npmtest-jimp)
 
 #### An image processing library written entirely in JavaScript (i.e. zero external or native dependencies).
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-jimp/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-jimp/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-jimp/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-jimp/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-jimp/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-jimp/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-jimp/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-jimp/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-jimp/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-jimp/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-jimp/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-jimp/build/coverage.html/index.html)
 
@@ -109,7 +109,8 @@
         "test": "./test/tests.sh"
     },
     "tonicExampleFilename": "example.js",
-    "version": "0.2.27"
+    "version": "0.2.27",
+    "bin": {}
 }
 ```
 
